@@ -1,0 +1,83 @@
+                      Mini-projet 1 : solveur DPLL récursif
+                             fichier RENDU
+                       (à remplir obligatoirement)
+
+**Un mini-projet sans fichier RENDU rempli ne recevra pas de note.**
+
+Date limite: 28 octobre 2022, 23h59
+
+Identité
+--------
+Nombre de binôme: 17
+Nom, prénom 1: SAADI, Abderrezak
+Nom, prénom 2: OTMANE CHERIF, Mohammed Islem
+
+
+Questions sur votre code
+------------------------
+0. Avez-vous testé que `make dpll` s'exécute sans erreurs ou warnings,
+   et que ensuite `./dpll sudoku-4x4.cnf` donne la réponse attendue (voir
+   fichier README) ?
+
+Oui on bien testé que make dpll s'exécute sans erreurs ou warnings et le test donne la reponse attendue
+
+---
+
+1. Avez-vous utilisé la fonction `filter_map` (donné dans dpll.ml)
+   dans votre implémentation de `simplifie` ? 
+   - Si oui, expliquez en quelques phrases en français comment vous
+     l'avez utilisée.
+   - Si non, expliquez en quelques phrases en français comment
+     fonctionne votre implémentation de `simplifie`.
+
+Non, tout d'abore j'ai mets la fontion simplifie recursive pour que je puisse tester chaque clause de l'interpretation
+apres je commance par chercher le littéral l dans la clause si il existe on supprimer cette clause (on la ignore en 
+concaténent notre clauses avec le clause suivantes) et si le littéral l n'existe pas dans la clause on cherche -l si 
+il existe on le supprime sinon on ne fait rien PS: <<le recherche de l et -l dans une clause se fait par deux fonction 
+auxiliaire>>
+
+---
+
+2. Pour l'implémentation de `unitaire`, quelles sont les fonctions
+   auxiliaires que vous avez utilisées et/ou écrites ? (Par une
+   fonction auxiliaire, on entend ici soit une fonction d'une
+   bibliothèque, par exemple des fonctions comme `List.length`,
+   `List.rev_append`, ou une fonction `aux_unitaire` que vous avez
+   écrite vous-mêmes.) Expliquez en quelques phrases en français
+   comment ces fonctions auxiliaires sont utilisées dans votre
+   implémentation de la fonction `unitaire`.
+
+on a utilisé la fonction List.length pour déterminer si une liste (i.e une clause) est de longuer 1 (i.e unitaire)
+dans la liste de liste clauses (i.e dans la formule), et aussi on a définie unitaire comme recursive pour simplifie le programme
+
+---
+
+3. Pour l'implémentation de `pur`, quelles sont les fonctions
+   auxiliaires que vous avez utilisées et/ou écrites ?  Expliquez en
+   quelques phrases en français comment ces fonctions auxiliaires sont
+   utilisées dans votre implémentation de la fonction `pur`.
+
+la fonction pur fait appele à :
+ - la fonction transformer qui transforme une liste de liste "clauses " a une liste "l" qui contient tout les éléments 
+    des sous-listes de clauses sans répétition, et ce en faisant appele à une fonction  merge_list qui ajoute à une liste "l" tous 
+    les éléments d'une autre liste "li" qui ne figure pas dans "l" sans répétition.
+ - la fonctionn locale pur_interne qui prend une liste et verifie pour chaque élémengt "x" de cette liste si sa négation "-x" figure *
+   dans cette liste (cette liste est obtenue par transformer [] clauses, et elle contiendra tous les littéraux de clauses).    
+
+---
+
+4. Donnez un exemple d'une formule pour laquelle les deux fonctions
+   `solveur_split` et `solveur_dpll_rec` ont un comportement
+   différent, et expliquez les différences entre ces deux fonctions.
+
+[[-3;4];[-3;5];[3;-4;5]]
+
+---
+
+5. Avez-vous d'autres remarques sur votre rendu ? (question optionnelle)
+
+Non
+
+---
+
+--fin du fichier RENDU--
